@@ -6,10 +6,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -40,8 +42,11 @@ public class LifeAndLimb
     public LifeAndLimb()
     {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
         ENTITY_TYPES.register(modBus);
+
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> LifeAndLimbClient.onCtor(modBus, forgeBus));
     }
 
     public static ResourceLocation path(String path) { return new ResourceLocation(MOD_ID, path); }
