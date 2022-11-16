@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="MIT License"
+
+[[mods]]
+modId="lifeandlimb"
+version="${file.jarVersion}"
+displayName="Life and Limb"
+displayURL="https://github.com/rbasamoyai/LifeAndLimb"
+logoFile="logo.png"
+credits="An rbasamoyai mod"
+authors="rbasamoyai"
+description='''Mob limbs go weee'''
+
+[[dependencies.lifeandlimb]]
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.lifeandlimb]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2,1.19)"
+    ordering="NONE"
+    side="BOTH"
